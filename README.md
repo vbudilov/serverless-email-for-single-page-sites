@@ -1,14 +1,17 @@
-# Sample Lambda Function
+# Sample Lambda Function with SES integration
 
 ## Introduction
-This simple code snippet is a deployable example of a lambda/ses integration. 
+This simple code is a deployable example of a lambda/ses integration. Although it can run in produciton without a hitch, I'd still create unit tests if I were you.
+
+##Who would want to use this?
+If you decided to host a static website on S3 but still want people to send you emails through your contact page, this might be a really nice solution for you. The combination of S3, Lambda, & SES covers the basis for a lot of website owners. 
 
 ## Setup
 You'll need to setup an api gateway, lambda security role, lambda function, and ses
 
 ###Get this repo and build it with maven
 ```
-mvn clean install package
+mvn package
 ```
 Use the packaged jar file in the 'create a lambda function' step
 
@@ -28,6 +31,8 @@ arn:aws:iam::1111111111:role/awsLambdaExecution
 ```
 
 ###Create a lambda function
+You can run the below command to create the function, just make sure you're ok with the parameters. Pricing depends on the memory-size, so you might want to choose a smaller footprint there
+
 ```
 aws lambda create-function \
 --region us-east-1 \

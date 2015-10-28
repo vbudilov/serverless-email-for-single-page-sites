@@ -12,7 +12,13 @@ public class Main {
     public String sendMail(Email email, Context context) {
         LambdaLogger logger = context.getLogger();
         logger.log("received : " + email);
-        EmailService.sendEmail(email);
-        return String.valueOf(email);
+        String response = "{ \"success\": \"true\"}";
+        try {
+            EmailService.sendEmail(email);
+        } catch (Exception exc) {
+            response = "{ \"success\": \"false\"}";
+        }
+
+        return String.valueOf(response);
     }
 }

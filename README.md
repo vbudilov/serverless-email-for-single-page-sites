@@ -19,7 +19,7 @@ Use the packaged jar file in the 'create a lambda function' step
 ```
 { 
     
-    "fromEmail" : "budilov@gmail.com",
+    "from" : "budilov@gmail.com",
     "subject" : "Hello World",
     "message" : "First Test"
 }

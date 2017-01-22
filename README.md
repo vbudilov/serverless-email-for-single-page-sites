@@ -102,6 +102,17 @@ aws lambda create-function \
 --profile ${PROFILE}
 ```
 
+P.S. Consider creating a lambda alias once you decide to deploy to PRD (following AWS best-practices)
+
+```
+aws lambda create-alias \
+--region ${REGION} \
+--function-name ${LAMBDA_FUNCTION} \
+--description "lambda to ses alias" \
+--function-version "\$LATEST" \
+--name DEV \
+--profile ${PROFILE}
+```
 Run the following command if you need to update the function with the new code (after you already created it)
 
 ```

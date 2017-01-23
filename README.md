@@ -2,6 +2,8 @@
 
 ## Introduction
 This simple code is a deployable example of a lambda/ses integration. 
+![Architecture](/meta/Lambda-SES-Architecture.png?raw=true)
+
 
 ##Who would want to use this?
 If you decided to host a static website on S3 but still want people to send you emails through your contact page, this might be a really nice solution for you. The combination of S3, Lambda, & SES covers the basis for a lot of website owners. 

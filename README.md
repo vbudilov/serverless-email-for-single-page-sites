@@ -14,7 +14,12 @@ The combination of S3, API Gateway, Lambda, & SES covers the basis for a
 lot of website owners. 
 
 ## Setup
-You'll need to setup an api gateway, a lambda IAM role, a lambda function, and ses
+In order for this to work, you need to authorize the receiver (DESTINATION_EMAIL) of your setup. Otherwise SES 
+will throw an exception saying that the destination email isn't verified. 
+[More info here: Verifying Email Addresses in Amazon SES](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-email-addresses.html)
+
+_Running the cloudformation scripts will provision the needed resources, including 
+API Gateway and Lambda, which might incur some costs_
 
 ### Get this repo and build it with maven
 ```
@@ -35,12 +40,6 @@ aws cloudformation package --template-file sam.yaml --s3-bucket code.bucket.name
 ```
 aws cloudformation deploy --template-file /tmp/ses-deployment --stack-name send-email-stack --parameter-overrides RegionParameter=us-east-1 DestinationEmailParameter=some.email@domain.com --capabilities CAPABILITY_IAM
 ```
-
-### Setup SES
-In order for this to work, you need to authorize the receiver (DESTINATION_EMAIL) of your setup. Otherwise SES 
-will throw an exception saying that the destination email isn't verified. 
-[More info here: Verifying Email Addresses in Amazon SES](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-email-addresses.html)
-
 
 ### Test it
 ```
